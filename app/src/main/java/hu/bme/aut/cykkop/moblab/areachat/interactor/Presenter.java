@@ -10,11 +10,11 @@ import javax.inject.Singleton;
 public class Presenter {
 
     @Inject
-    private AuthInteractor authInteractor;
+    protected AuthInteractor authInteractor;
     @Inject
-    private MessageInteractor messageInteractor;
+    protected MessageInteractor messageInteractor;
     @Inject
-    private PositionInteractor positionInteractor;
+    protected PositionInteractor positionInteractor;
     @Inject
-    private PersonInteractor personInteractor;
+    protected PersonInteractor personInteractor;
 }
