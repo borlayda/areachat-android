@@ -32,12 +32,19 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import hu.bme.aut.cykkop.moblab.areachat.interactor.Presenter;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+
+    @Inject
+    private Presenter presenter;
 
     /**
      * Id to identity READ_CONTACTS permission request.
