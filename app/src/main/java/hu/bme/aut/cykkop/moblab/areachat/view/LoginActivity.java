@@ -1,7 +1,5 @@
-package hu.bme.aut.cykkop.moblab.areachat;
+package hu.bme.aut.cykkop.moblab.areachat.view;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,7 +17,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,7 +32,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import hu.bme.aut.cykkop.moblab.areachat.interactor.Presenter;
+import hu.bme.aut.cykkop.moblab.areachat.R;
+import hu.bme.aut.cykkop.moblab.areachat.presenter.AuthPresenter;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -45,7 +43,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     @Inject
-    protected Presenter presenter;
+    protected AuthPresenter presenter;
 
     /**
      * Id to identity READ_CONTACTS permission request.

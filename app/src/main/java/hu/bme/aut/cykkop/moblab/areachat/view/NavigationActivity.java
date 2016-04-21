@@ -1,4 +1,4 @@
-package hu.bme.aut.cykkop.moblab.areachat;
+package hu.bme.aut.cykkop.moblab.areachat.view;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import hu.bme.aut.cykkop.moblab.areachat.R;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

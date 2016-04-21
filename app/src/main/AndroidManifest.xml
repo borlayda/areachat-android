@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <uses-library android:name="com.google.android.maps" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".view.LoginActivity"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,15 +24,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".view.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".NavigationActivity"
+            android:name=".view.NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SelectorActivity"
+            android:name=".view.SelectorActivity"
             android:label="@string/title_activity_selector"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

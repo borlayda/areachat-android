@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="hu.bme.aut.cykkop.moblab.areachat.SelectorActivity">
+    tools:context=".view.SelectorActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -24,12 +24,6 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
         </android.support.v7.widget.Toolbar>
-
-        <MapView
-            android:id="@+id/selector_map"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </MapView>
 
     </android.support.design.widget.AppBarLayout>
 

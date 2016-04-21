@@ -1,4 +1,4 @@
-package hu.bme.aut.cykkop.moblab.areachat;
+package hu.bme.aut.cykkop.moblab.areachat.view;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+
+import hu.bme.aut.cykkop.moblab.areachat.R;
 
 public class SelectorActivity extends AppCompatActivity {
 
