@@ -32,6 +32,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import hu.bme.aut.cykkop.moblab.areachat.MainApplication;
 import hu.bme.aut.cykkop.moblab.areachat.R;
 import hu.bme.aut.cykkop.moblab.areachat.presenter.AuthPresenter;
 
@@ -71,6 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((MainApplication) getApplication()).getAppComponent().inject(this);
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mUserNameView = (AutoCompleteTextView) findViewById(R.id.username);

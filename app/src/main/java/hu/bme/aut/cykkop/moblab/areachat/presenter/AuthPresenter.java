@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Module;
+import dagger.Provides;
 import hu.bme.aut.cykkop.moblab.areachat.interactor.AuthInteractor;
 import hu.bme.aut.cykkop.moblab.areachat.interactor.MessageInteractor;
 import hu.bme.aut.cykkop.moblab.areachat.interactor.PersonInteractor;
@@ -18,4 +19,11 @@ public class AuthPresenter {
     @Inject
     protected AuthInteractor authInteractor;
 
+    AuthPresenter(AuthInteractor authInteractor){
+        this.authInteractor = authInteractor;
+    }
+
+    @Inject
+    public AuthPresenter() {
+    }
 }
