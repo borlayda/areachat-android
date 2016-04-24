@@ -35,16 +35,29 @@ import javax.inject.Inject;
 import hu.bme.aut.cykkop.moblab.areachat.MainApplication;
 import hu.bme.aut.cykkop.moblab.areachat.R;
 import hu.bme.aut.cykkop.moblab.areachat.presenter.AuthPresenter;
+import hu.bme.aut.cykkop.moblab.areachat.screen.AuthScreen;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>, AuthScreen {
 
     @Inject
     protected AuthPresenter presenter;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        presenter.attachScreen(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        presenter.detachScreen();
+    }
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -79,29 +92,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    navigateLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
 
         Button mUserNameSignInButton = (Button) findViewById(R.id.sign_in_button);
         mUserNameSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigateLogin();
+                presenter.showMap(mUserNameView.getText().toString(), mPasswordView.getText().toString());
             }
         });
         Button mRegisterButton = (Button) findViewById(R.id.register_button);
         mRegisterButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigateRegister();
+                presenter.showRegister();
             }
         });
 
@@ -151,22 +154,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
-    private void navigateLogin() {
-        Intent intent = new Intent(this, SelectorActivity.class);
-        startActivity(intent);
-    }
-
-    private void navigateRegister(){
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
-    }
-
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(this,
@@ -208,6 +195,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mUserNameView.setAdapter(adapter);
+    }
+
+    @Override
+    public void navigateToMap() {
+        Intent intent = new Intent(this, SelectorActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void navigateToRegister() {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 
 
