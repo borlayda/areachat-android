@@ -1,0 +1,258 @@
+# REST API for Areachat Android application
+swagger: '2.0'
+info:
+  title: Areachat API
+  description: |
+    Talk with others in your area, with the Areachat application.
+    The application uses this API for saving information, or getting
+    data about other users.
+  version: "1.0.0"
+host: hu.bme.aut.cykkop.moblab.areachat
+schemes:
+  - https
+  - http
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /login/user:
+    post:
+      summary: User login
+      description: |
+        User can log in to the application to use the functions and
+        communicate with other users.
+      parameters:
+        - name: username
+          in: query
+          description: Name of the user
+          required: true
+          type: string
+          format: string
+        - name: password
+          in: query
+          description: Authentication password
+          required: true
+          type: string
+          format: string
+      tags:
+        - User
+        - Login
+      responses:
+        200:
+          description: Successfully authenticated
+          schema:
+            type: string
+        default:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+  /logout/user:
+    post:
+      summary: User logout
+      description: |
+        The user can log out from the application
+      parameters:
+        - name: username
+          in: query
+          description: Name of the user, who logs out
+          type: string
+          format: string
+      tags:
+        - User
+        - Logout
+      responses:
+        200:
+          description: Successfully logged out
+          schema:
+            type: string
+        default:
+          description: Failed to log out
+          schema:
+            $ref: '#/definitions/Error'
+  /register/user:
+    post:
+      summary: New user
+      description: |
+        Registers a new user to the system with the data has been given
+        to the application from the Graphical user interface.
+      parameters:
+        - name: username
+          in: query
+          description: Name of the user
+          type: string
+          format: string
+        - name: password
+          in: query
+          description: Password of the user which could be used for authentication
+          type: string
+          format: string
+        - name: email
+          in: query
+          description: E-mail address of the user
+          type: string
+          format: string
+        - name: Gender
+          in: query
+          description: Gender of the user
+          type: string
+          format: string
+      tags:
+        - User
+        - Register
+      responses:
+        200:
+          description: User successfully created
+          schema:
+            type: string
+        default:
+          description: Failed to create user
+          schema:
+            $ref: '#/definitions/Error'
+  /position:
+    get:
+      summary: Get users in area
+      description: |
+        Gives back the users in an area of your position
+      parameters:
+        - name: longitude
+          in: query
+          description: Longitude of current position
+          type: number
+          format: int32
+        - name: latitude
+          in: query
+          description: Latitude of current position
+          type: number
+          format: int32
+      tags:
+        - Position
+      responses:
+        200:
+          description: Array of Persons
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Person"
+        default:
+          description: Failed to get persons
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Send user position to the server
+      description: |
+        Updates the user position in the backend's database
+      parameters:
+        - name: username
+          in: query
+          description: The name of the user, who updates position
+          type: string
+          format: string
+        - name: longitude
+          in: query
+          description: Longitude of current position
+          type: number
+          format: int32
+        - name: latitude
+          in: query
+          description: Latitude of current position
+          type: number
+          format: int32
+      tags:
+        - Position
+      responses:
+        200:
+          description: Position successfully updated
+          schema:
+            type: string
+        default:
+          description: Failed to update position
+          schema:
+            $ref: '#/definitions/Error'
+  /message:
+    get:
+      summary: Get user messages
+      description: |
+        Gives back all the messages, which has the user as its
+        destination.
+      parameters:
+        - name: username
+          in: query
+          description: Name of the user, who has related messages
+          type: string
+          format: string
+      tags:
+        - Message
+      responses:
+        200:
+          description: List of masseges related to the user
+          schema:
+            type: array
+            items:
+              - $ref: "#/definitions/Message"
+        default:
+          description: Failed to get messages
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Send message
+      description: |
+        The user can log out from the application
+      parameters:
+        - name: from
+          in: query
+          description: Name of the user who sent the message
+          type: string
+        - name: to
+          in: query
+          description: Name of the user who got this message
+          type: string
+        - name: message
+          in: query
+          description: New message sent to someone
+          type: string
+      tags:
+        - Message
+      responses:
+        200:
+          description: Message successfully sent
+          schema:
+            type: string
+        default:
+          description: Failed to send message
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Message:
+    type: object
+    properties:
+      from:
+        type: string
+        description: Name of the user who sent the message
+      to:
+        type: string
+        description: Name of the user who got the message
+      message:
+        type: string
+        description: Message which has been send
+  Person:
+    type: object
+    properties:
+      name:
+        type: string
+        description: The name of the person
+      longitude:
+        type: integer
+        description: Longitude of the current position
+      latitude:
+        type: integer
+        description: Latitude of the current position
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string

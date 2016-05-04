@@ -1,5 +1,6 @@
 package hu.bme.aut.cykkop.moblab.areachat.interactor;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -11,8 +12,7 @@ import dagger.Provides;
 @Module
 public class AuthInteractor {
 
-    @Provides
-    AuthInteractor providesAuthInteractor(){
-        return new AuthInteractor();
+    @Inject
+    public AuthInteractor() {
     }
 }
