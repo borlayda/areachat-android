@@ -5,11 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.realm.RealmObject;
+import io.realm.annotations.Required;
+
 /**
  * Created by badmin on 2016.04.21..
  */
-public class Person {
+public class Person extends RealmObject {
 
+    @Required
     private String name;
     private Map<Person, Map<Date, String>> speeches;
     private Position position;
@@ -22,6 +26,30 @@ public class Person {
 
     Person(String name, Position position){
         this.name = name;
+        this.position = position;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Map<Person, Map<Date, String>> getSpeeches() {
+        return speeches;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSpeeches(Map<Person, Map<Date, String>> speeches) {
+        this.speeches = speeches;
+    }
+
+    public void setPosition(Position position) {
         this.position = position;
     }
 

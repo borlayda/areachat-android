@@ -1,5 +1,10 @@
 package hu.bme.aut.cykkop.moblab.areachat.interactor;
 
+import android.os.Message;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -14,5 +19,9 @@ public class MessageInteractor {
 
     @Inject
     public MessageInteractor() {
+    }
+
+    public List<Message> getMessages() {
+        return new ArrayList<>();
     }
 }

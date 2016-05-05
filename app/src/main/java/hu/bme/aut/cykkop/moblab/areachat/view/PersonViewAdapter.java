@@ -8,21 +8,21 @@ import android.widget.TextView;
 
 import hu.bme.aut.cykkop.moblab.areachat.R;
 import hu.bme.aut.cykkop.moblab.areachat.view.PersonListFragment.OnListFragmentInteractionListener;
-import hu.bme.aut.cykkop.moblab.areachat.view.dummy.DummyContent.DummyItem;
+import hu.bme.aut.cykkop.moblab.areachat.view.dummy.PersonData.PersonItem;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link PersonItem} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class PersonViewAdapter extends RecyclerView.Adapter<PersonViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<PersonItem> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public PersonViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public PersonViewAdapter(List<PersonItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -61,7 +61,7 @@ public class PersonViewAdapter extends RecyclerView.Adapter<PersonViewAdapter.Vi
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public PersonItem mItem;
 
         public ViewHolder(View view) {
             super(view);

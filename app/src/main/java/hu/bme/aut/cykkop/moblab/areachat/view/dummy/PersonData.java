@@ -11,17 +11,17 @@ import java.util.Map;
  * <p/>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class DummyContent {
+public class PersonData {
 
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<DummyItem> ITEMS = new ArrayList<DummyItem>();
+    public static final List<PersonItem> ITEMS = new ArrayList<PersonItem>();
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
+    public static final Map<String, PersonItem> ITEM_MAP = new HashMap<String, PersonItem>();
 
     private static final int COUNT = 25;
 
@@ -32,13 +32,13 @@ public class DummyContent {
         }
     }
 
-    private static void addItem(DummyItem item) {
+    private static void addItem(PersonItem item) {
         ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
+        ITEM_MAP.put(item.name, item);
     }
 
-    private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
+    private static PersonItem createDummyItem(int position) {
+        return new PersonItem(String.valueOf(position), "Item " + position, makeDetails(position));
     }
 
     private static String makeDetails(int position) {
@@ -53,20 +53,20 @@ public class DummyContent {
     /**
      * A dummy item representing a piece of content.
      */
-    public static class DummyItem {
-        public final String id;
-        public final String content;
-        public final String details;
+    public static class PersonItem {
+        public final String name;
+        public final String distance;
+        public final String gender;
 
-        public DummyItem(String id, String content, String details) {
-            this.id = id;
-            this.content = content;
-            this.details = details;
+        public PersonItem(String name, String distance, String gender) {
+            this.name = name;
+            this.distance = distance;
+            this.gender = gender;
         }
 
         @Override
         public String toString() {
-            return content;
+            return "Name: "+ name +" Distance: "+ distance +" Gender: "+ gender;
         }
     }
 }

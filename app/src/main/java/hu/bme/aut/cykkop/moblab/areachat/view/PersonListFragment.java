@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import hu.bme.aut.cykkop.moblab.areachat.R;
 import hu.bme.aut.cykkop.moblab.areachat.model.Person;
 import hu.bme.aut.cykkop.moblab.areachat.screen.PersonScreen;
-import hu.bme.aut.cykkop.moblab.areachat.view.dummy.DummyContent;
-import hu.bme.aut.cykkop.moblab.areachat.view.dummy.DummyContent.DummyItem;
+import hu.bme.aut.cykkop.moblab.areachat.view.dummy.PersonData;
+import hu.bme.aut.cykkop.moblab.areachat.view.dummy.PersonData.PersonItem;
 
 import java.util.List;
 
@@ -72,7 +72,7 @@ public class PersonListFragment extends Fragment implements PersonScreen {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new PersonViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new PersonViewAdapter(PersonData.ITEMS, mListener));
         }
         return view;
     }
@@ -117,6 +117,6 @@ public class PersonListFragment extends Fragment implements PersonScreen {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(PersonItem item);
     }
 }
