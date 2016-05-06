@@ -2,10 +2,12 @@ package hu.bme.aut.cykkop.moblab.areachat.model;
 
 import java.util.Date;
 
+import io.realm.RealmObject;
+
 /**
  * Created by badmin on 2016.05.05..
  */
-public class Message{
+public class Message extends RealmObject {
 
     private String id;
     private Date timestamp;

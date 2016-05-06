@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.Required;
 
@@ -16,10 +17,10 @@ public class Person extends RealmObject {
 
     @Required
     private String name;
-    private List<Speech> speeches;
+    private RealmList<Speech> speeches;
     private Position position;
 
-    public Person(String name, List<Speech> speeches, Position position){
+    public Person(String name, RealmList<Speech> speeches, Position position){
         this.name = name;
         this.speeches = speeches;
         this.position = position;
@@ -32,7 +33,7 @@ public class Person extends RealmObject {
 
     public Person(){
         this.name = null;
-        this.speeches = new ArrayList<>();
+        this.speeches = new RealmList<>();
         this.position = new Position();
     }
 
@@ -40,7 +41,7 @@ public class Person extends RealmObject {
         return name;
     }
 
-    public List<Speech> getSpeeches() {
+    public RealmList<Speech> getSpeeches() {
         return speeches;
     }
 
@@ -52,7 +53,7 @@ public class Person extends RealmObject {
         this.name = name;
     }
 
-    public void setSpeeches(List<Speech> speeches) {
+    public void setSpeeches(RealmList<Speech> speeches) {
         this.speeches = speeches;
     }
 
@@ -60,19 +61,24 @@ public class Person extends RealmObject {
         this.position = position;
     }
 
-    public void addSpeech(Person person, List<Message> speech) {
-        this.speeches.put(person, speech);
+    public void addSpeech(Person person, RealmList<Message> speech) {
+        Speech newSpeech = new Speech(person, speech);
+        this.speeches.add(newSpeech);
     }
 
     public void addNewLine(Person person, String line){
-        if (this.speeches.containsKey(person)){
-            List<Message> previousSpeech = this.speeches.get(person);
-            previousSpeech.add(new Message(line));
-        } else {
-            List<Message> newLine = new ArrayList<>();
-            newLine.add(new Message(line));
-            this.speeches.put(person, newLine);
+        for (Speech speech : this.speeches){
+            if (speech.getPerson().equals(person)){
+                RealmList<Message> previousSpeech = speech.getMessages();
+                previousSpeech.add(new Message(line));
+                speech.setMessages(previousSpeech);
+                return;
+            }
         }
+        RealmList<Message> newMessages = new RealmList<>();
+        newMessages.add(new Message(line));
+        Speech newSpeech = new Speech(person, newMessages);
+        this.speeches.add(newSpeech);
     }
 
     public void updatePosition(Position position){

@@ -1,8 +1,10 @@
-package hu.bme.aut.cykkop.moblab.areachat.active;
+package hu.bme.aut.cykkop.moblab.areachat.interactor;
 
 import android.content.Context;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,6 +12,7 @@ import javax.inject.Singleton;
 
 import hu.bme.aut.cykkop.moblab.areachat.interactor.DataInteractor;
 import hu.bme.aut.cykkop.moblab.areachat.model.Person;
+import hu.bme.aut.cykkop.moblab.areachat.model.Position;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
@@ -19,36 +22,31 @@ import io.realm.RealmResults;
  */
 
 @Singleton
-public class DataInteractorImpl implements DataInteractor {
+public class MockDataInteractorImpl implements DataInteractor {
 
-    private Realm realm;
 
     @Inject
-    public DataInteractorImpl(Context context) {
-        RealmConfiguration realmConfig = new RealmConfiguration.Builder(context).build();
-        realm = Realm.getInstance(realmConfig);
+    public MockDataInteractorImpl(Context context) {
+
     }
 
     @Override
     public Person getPerson(String name) {
-        Person realmPerson = realm.where(Person.class).equalTo("name", name).findFirst();
-        return realmPerson;
+        return new Person(
+                new String("Test User2"),
+                null,
+                new Position((float)47.3, (float)19.5)
+        );
     }
 
     @Override
     public void savePerson(Person person) {
-        realm.beginTransaction();
-        realm.copyToRealm(person);
-        realm.commitTransaction();
+
     }
 
     @Override
     public List<Person> getPersonsInArea(float longitude, float latitude) {
-        RealmResults<Person> realmPersons = realm.allObjects(Person.class);
         List<Person> retVal = new ArrayList<>();
-        for (Person person  : realmPersons) {
-            retVal.add(person);
-        }
         return retVal;
     }
 }

@@ -4,22 +4,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import io.realm.RealmList;
+import io.realm.RealmObject;
+
 /**
  * Created by badmin on 2016.05.06..
  */
-public class Speech {
+public class Speech extends RealmObject {
 
     private Person person;
-    private List<Message> messages;
+    private RealmList<Message> messages;
 
-    public Speech(Person person, List<Message> messages){
+    public Speech(Person person, RealmList<Message> messages){
 
         this.messages = messages;
         this.person = person;
     }
 
     public Speech(){
-        this.messages = new ArrayList<>();
+        this.messages = new RealmList<>();
         this.person = new Person();
     }
 
@@ -27,7 +30,7 @@ public class Speech {
         return person;
     }
 
-    public List<Message> getMessages() {
+    public RealmList<Message> getMessages() {
         return messages;
     }
 
@@ -35,7 +38,7 @@ public class Speech {
         this.person = person;
     }
 
-    public void setMessages(List<Message> messages) {
+    public void setMessages(RealmList<Message> messages) {
         this.messages = messages;
     }
 }
