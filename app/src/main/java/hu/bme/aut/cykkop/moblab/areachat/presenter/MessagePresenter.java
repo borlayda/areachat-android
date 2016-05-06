@@ -1,5 +1,7 @@
 package hu.bme.aut.cykkop.moblab.areachat.presenter;
 
+import android.os.Message;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -31,5 +33,15 @@ public class MessagePresenter extends Presenter<MessageScreen> {
     @Override
     public void detachScreen() {
         super.detachScreen();
+    }
+
+    public void listMessages() {
+        messageInteractor.getMessages();
+        screen.getMessages();
+    }
+
+    public void sendMessage() {
+        Message message = screen.sendMessage();
+        messageInteractor.sendMessage(message);
     }
 }

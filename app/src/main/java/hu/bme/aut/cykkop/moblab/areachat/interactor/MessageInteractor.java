@@ -24,4 +24,8 @@ public class MessageInteractor {
     public List<Message> getMessages() {
         return new ArrayList<>();
     }
+
+    public void sendMessage(Message message) {
+
+    }
 }

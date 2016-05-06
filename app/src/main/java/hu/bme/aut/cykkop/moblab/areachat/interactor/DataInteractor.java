@@ -1,5 +1,7 @@
 package hu.bme.aut.cykkop.moblab.areachat.interactor;
 
+import java.util.List;
+
 import hu.bme.aut.cykkop.moblab.areachat.model.Person;
 
 /**
@@ -9,5 +11,6 @@ public interface DataInteractor {
 
     public Person getPerson(String name);
     public void savePerson(Person person);
+    public List<Person> getPersonsInArea(float longitude, float latitude);
 
 }

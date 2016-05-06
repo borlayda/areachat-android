@@ -1,4 +1,4 @@
-package hu.bme.aut.cykkop.moblab.areachat.interactor;
+package hu.bme.aut.cykkop.moblab.areachat.active;
 
 import android.content.Context;
 
@@ -8,6 +8,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import hu.bme.aut.cykkop.moblab.areachat.interactor.DataInteractor;
 import hu.bme.aut.cykkop.moblab.areachat.model.Person;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -39,5 +40,15 @@ public class DataInteractorImpl implements DataInteractor {
         realm.beginTransaction();
         realm.copyToRealm(person);
         realm.commitTransaction();
+    }
+
+    @Override
+    public List<Person> getPersonsInArea(float longitude, float latitude) {
+        RealmResults<Person> realmPersons = realm.allObjects(Person.class);
+        List<Person> retVal = new ArrayList<>();
+        for (Person person  : realmPersons) {
+            retVal.add(person);
+        }
+        return retVal;
     }
 }

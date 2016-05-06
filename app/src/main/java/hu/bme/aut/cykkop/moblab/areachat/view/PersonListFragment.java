@@ -26,6 +26,8 @@ import java.util.List;
  */
 public class PersonListFragment extends Fragment implements PersonScreen {
 
+    private static final String ARG_SECTION_NUMBER = "section_number";
+
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters

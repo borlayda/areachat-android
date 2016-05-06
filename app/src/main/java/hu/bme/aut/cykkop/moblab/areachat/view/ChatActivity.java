@@ -18,12 +18,12 @@ public class ChatActivity extends AppCompatActivity implements MessageScreen {
     }
 
     @Override
-    public List<Message> getMessages() {
-        return null;
+    public void getMessages() {
+
     }
 
     @Override
-    public void sendMessage() {
-
+    public Message sendMessage() {
+        return null;
     }
 }

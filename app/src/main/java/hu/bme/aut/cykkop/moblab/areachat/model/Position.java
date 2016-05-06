@@ -10,7 +10,7 @@ public class Position extends RealmObject {
     private float longitude;
     private float latitude;
 
-    Position(float longitude, float latitude){
+    public Position(float longitude, float latitude){
         this.longitude = longitude;
         this.latitude = latitude;
     }

@@ -8,6 +8,6 @@ import java.util.List;
  * Created by ednibor on 4/24/16.
  */
 public interface MessageScreen {
-    public List<Message> getMessages();
-    public void sendMessage();
+    public void getMessages();
+    public Message sendMessage();
 }

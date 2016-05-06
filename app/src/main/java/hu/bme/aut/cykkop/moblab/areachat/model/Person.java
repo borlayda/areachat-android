@@ -18,13 +18,13 @@ public class Person extends RealmObject {
     private Map<Person, Map<Date, String>> speeches;
     private Position position;
 
-    Person(String name, Map<Person, Map<Date, String>> speeches, Position position){
+    public Person(String name, Map<Person, Map<Date, String>> speeches, Position position){
         this.name = name;
         this.speeches = speeches;
         this.position = position;
     }
 
-    Person(String name, Position position){
+    public Person(String name, Position position){
         this.name = name;
         this.position = position;
     }
