@@ -1,19 +1,29 @@
 package hu.bme.aut.cykkop.moblab.areachat.model;
 
+import java.util.Date;
+
 /**
  * Created by badmin on 2016.05.05..
  */
 public class Message{
 
-    private long id;
+    private String id;
+    private Date timestamp;
     private String message;
 
-    public Message(long id, String message){
-        this.id = id;
+    public Message(String message){
+        this.timestamp = new Date();
         this.message = message;
+        this.id = timestamp.toString()+this.message;
     }
 
-    public long getId() {
+    public Message(){
+        this.timestamp = new Date();
+        this.message = null;
+        this.id = timestamp.toString()+this.message;
+    }
+
+    public String getId() {
         return id;
     }
 
@@ -21,7 +31,7 @@ public class Message{
         return message;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -15,6 +15,11 @@ public class Position extends RealmObject {
         this.latitude = latitude;
     }
 
+    public Position(){
+        this.longitude = (float)0.0;
+        this.latitude = (float)0.0;
+    }
+
     public float getLongitude() {
         return longitude;
     }
