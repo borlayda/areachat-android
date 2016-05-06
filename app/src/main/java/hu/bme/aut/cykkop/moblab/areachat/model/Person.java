@@ -16,10 +16,10 @@ public class Person extends RealmObject {
 
     @Required
     private String name;
-    private Map<Person, List<Message>> speeches;
+    private List<Speech> speeches;
     private Position position;
 
-    public Person(String name, Map<Person, List<Message>> speeches, Position position){
+    public Person(String name, List<Speech> speeches, Position position){
         this.name = name;
         this.speeches = speeches;
         this.position = position;
@@ -32,7 +32,7 @@ public class Person extends RealmObject {
 
     public Person(){
         this.name = null;
-        this.speeches = new HashMap<>();
+        this.speeches = new ArrayList<>();
         this.position = new Position();
     }
 
@@ -40,7 +40,7 @@ public class Person extends RealmObject {
         return name;
     }
 
-    public Map<Person, List<Message>> getSpeeches() {
+    public List<Speech> getSpeeches() {
         return speeches;
     }
 
@@ -52,7 +52,7 @@ public class Person extends RealmObject {
         this.name = name;
     }
 
-    public void setSpeeches(Map<Person, List<Message>> speeches) {
+    public void setSpeeches(List<Speech> speeches) {
         this.speeches = speeches;
     }
 
