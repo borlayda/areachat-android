@@ -27,13 +27,11 @@ paths:
           description: Name of the user
           required: true
           type: string
-          format: string
         - name: password
           in: query
           description: Authentication password
           required: true
           type: string
-          format: string
       tags:
         - User
         - Login
@@ -56,7 +54,6 @@ paths:
           in: query
           description: Name of the user, who logs out
           type: string
-          format: string
       tags:
         - User
         - Logout
@@ -80,22 +77,18 @@ paths:
           in: query
           description: Name of the user
           type: string
-          format: string
         - name: password
           in: query
           description: Password of the user which could be used for authentication
           type: string
-          format: string
         - name: email
           in: query
           description: E-mail address of the user
           type: string
-          format: string
         - name: Gender
           in: query
           description: Gender of the user
           type: string
-          format: string
       tags:
         - User
         - Register
@@ -146,7 +139,6 @@ paths:
           in: query
           description: The name of the user, who updates position
           type: string
-          format: string
         - name: longitude
           in: query
           description: Longitude of current position
@@ -179,16 +171,13 @@ paths:
           in: query
           description: Name of the user, who has related messages
           type: string
-          format: string
       tags:
         - Message
       responses:
         200:
-          description: List of masseges related to the user
+          description: List of messages related to the user
           schema:
-            type: array
-            items:
-              - $ref: "#/definitions/Message"
+            $ref: '#/definitions/MessageList'
         default:
           description: Failed to get messages
           schema:
@@ -222,6 +211,11 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 definitions:
+  MessageList:
+    type: object
+    properties:
+      messages:
+        $ref: '#/definitions/Message'
   Message:
     type: object
     properties:
