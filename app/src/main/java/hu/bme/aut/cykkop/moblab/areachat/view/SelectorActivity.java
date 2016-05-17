@@ -19,8 +19,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import hu.bme.aut.cykkop.moblab.areachat.R;
+import hu.bme.aut.cykkop.moblab.areachat.view.dummy.PersonData;
 
-public class SelectorActivity extends AppCompatActivity {
+public class SelectorActivity extends AppCompatActivity implements PersonListFragment.OnListFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -85,6 +86,11 @@ public class SelectorActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onListFragmentInteraction(PersonData.PersonItem item) {
+
     }
 
     /**

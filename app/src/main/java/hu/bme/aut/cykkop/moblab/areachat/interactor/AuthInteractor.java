@@ -18,7 +18,7 @@ public class AuthInteractor {
     }
 
     public boolean authenticate(String username, String password){
-        return false;
+        return true;
     }
 
 }

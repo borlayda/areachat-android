@@ -5,23 +5,24 @@ import javax.inject.Inject;
 import dagger.Module;
 import hu.bme.aut.cykkop.moblab.areachat.interactor.AuthInteractor;
 import hu.bme.aut.cykkop.moblab.areachat.screen.AuthScreen;
+import hu.bme.aut.cykkop.moblab.areachat.screen.RegisterScreen;
 
 /**
- * Created by mobsoft on 2016. 04. 08..
+ * Created by badmin on 2016.05.17..
  */
 @Module
-public class AuthPresenter extends Presenter<AuthScreen> {
+public class RegisterPresenter extends Presenter<RegisterScreen> {
 
     @Inject
     protected AuthInteractor authInteractor;
 
     @Inject
-    public AuthPresenter(AuthInteractor authInteractor) {
+    public RegisterPresenter(AuthInteractor authInteractor) {
         this.authInteractor = authInteractor;
     }
 
     @Override
-    public void attachScreen(AuthScreen screen) {
+    public void attachScreen(RegisterScreen screen) {
         super.attachScreen(screen);
     }
 
@@ -30,14 +31,8 @@ public class AuthPresenter extends Presenter<AuthScreen> {
         super.detachScreen();
     }
 
-    public void showMap(String username, String password){
-        if (authInteractor.authenticate(username, password)) {
-            screen.navigateToMap();
-        }
-    }
-
-    public void showRegister() {
-        screen.navigateToRegister();
+    public void registerNewMember() {
+        screen.navigateToLogin();
     }
 
 }
