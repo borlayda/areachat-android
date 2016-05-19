@@ -40,14 +40,14 @@ public class RegisterActivity extends AppCompatActivity implements RegisterScree
         setContentView(R.layout.activity_register);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-/*
+
         Button mRegisterButton = (Button) findViewById(R.id.register_action_button);
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 presenter.registerNewMember();
             }
-        });*/
+        });
     }
 
     @Override
