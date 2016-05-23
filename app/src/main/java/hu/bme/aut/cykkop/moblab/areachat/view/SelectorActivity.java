@@ -20,6 +20,10 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import hu.bme.aut.cykkop.moblab.areachat.MainApplication;
 import hu.bme.aut.cykkop.moblab.areachat.R;
 import hu.bme.aut.cykkop.moblab.areachat.view.dummy.PersonData;
 
@@ -35,6 +39,18 @@ public class SelectorActivity extends AppCompatActivity implements PersonListFra
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private String username;
+    private Tracker mTracker;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mTracker.setScreenName("Image~LoginActivity");
+        mTracker.send(new HitBuilders.EventBuilder()
+                .setCategory("Action")
+                .setAction("Share")
+                .build());
+
+    }
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -44,6 +60,8 @@ public class SelectorActivity extends AppCompatActivity implements PersonListFra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MainApplication application = (MainApplication) getApplication();
+        mTracker = application.getDefaultTracker();
         setContentView(R.layout.activity_selector);
 
         // Create the adapter that will return a fragment for each of the three

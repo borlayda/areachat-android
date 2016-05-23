@@ -1,15 +1,35 @@
 package hu.bme.aut.cykkop.moblab.areachat;
 
 import android.app.Application;
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.ndk.CrashlyticsNdk;
+import io.fabric.sdk.android.Fabric;
+
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
+
 
 public class MainApplication extends Application {
 
     private AppComponent appComponent;
+    private Tracker mTracker;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics(), new CrashlyticsNdk());
         appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
+    }
+
+    synchronized public Tracker getDefaultTracker() {
+        if (mTracker == null) {
+            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
+            mTracker = analytics.newTracker(R.
+                    R.xml.global_tracker);
+        }
+        return mTracker;
     }
 
     public AppComponent getAppComponent() {

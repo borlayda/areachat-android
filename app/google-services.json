@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "75326678832",
+    "project_id": "mobillabor-1316"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75326678832:android:24ccb3b332396e1b",
+        "android_client_info": {
+          "package_name": "hu.bme.aut.cykkop.moblab.areachat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzlfMbI2RsThUT1RcCMIwlkPcDcN5tCrg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-78195311-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

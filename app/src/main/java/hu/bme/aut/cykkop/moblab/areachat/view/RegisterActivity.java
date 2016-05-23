@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import javax.inject.Inject;
 
 import hu.bme.aut.cykkop.moblab.areachat.MainApplication;
@@ -35,6 +38,18 @@ public class RegisterActivity extends Activity implements RegisterScreen {
     private RadioGroup mGenderGroup;
     private Button mRegisterButton;
     private RadioButton radbut;
+    private Tracker mTracker;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mTracker.setScreenName("Image~LoginActivity");
+        mTracker.send(new HitBuilders.EventBuilder()
+                .setCategory("Action")
+                .setAction("Share")
+                .build());
+
+    }
 
 
     @Override
@@ -53,6 +68,8 @@ public class RegisterActivity extends Activity implements RegisterScreen {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((MainApplication) getApplication()).getAppComponent().inject(this);
+        MainApplication application = (MainApplication) getApplication();
+        mTracker = application.getDefaultTracker();
         setContentView(R.layout.activity_register);
         // Set up the login form.
         mUserNameView = (AutoCompleteTextView) findViewById(R.id.username);
