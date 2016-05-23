@@ -31,7 +31,11 @@ public class RegisterPresenter extends Presenter<RegisterScreen> {
         super.detachScreen();
     }
 
-    public void registerNewMember() {
+    public void registerNewMember(String username, String password, String email, String gender) {
+        authInteractor.register(this, username, password, email, gender);
+    }
+
+    public void showLogin() {
         screen.navigateToLogin();
     }
 

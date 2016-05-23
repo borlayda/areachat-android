@@ -1,6 +1,7 @@
 package hu.bme.aut.cykkop.moblab.areachat.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,6 +16,7 @@ import hu.bme.aut.cykkop.moblab.areachat.model.Person;
 import hu.bme.aut.cykkop.moblab.areachat.screen.PersonScreen;
 import hu.bme.aut.cykkop.moblab.areachat.view.dummy.PersonData;
 import hu.bme.aut.cykkop.moblab.areachat.view.dummy.PersonData.PersonItem;
+import hu.bme.aut.cykkop.moblab.areachat.view.ChatActivity;
 
 import java.util.List;
 
@@ -104,7 +106,6 @@ public class PersonListFragment extends Fragment implements PersonScreen {
 
     @Override
     public void navigateSelectedPerson() {
-
     }
 
     /**
@@ -120,5 +121,6 @@ public class PersonListFragment extends Fragment implements PersonScreen {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(PersonItem item);
+        void onSelectItem(PersonItem item);
     }
 }

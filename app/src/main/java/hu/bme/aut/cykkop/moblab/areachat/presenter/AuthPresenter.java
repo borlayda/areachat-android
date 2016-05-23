@@ -30,14 +30,24 @@ public class AuthPresenter extends Presenter<AuthScreen> {
         super.detachScreen();
     }
 
-    public void showMap(String username, String password){
-        if (authInteractor.authenticate(username, password)) {
-            screen.navigateToMap();
-        }
+    public void authenticate(String username, String password) {
+        authInteractor.authenticate(this, username, password);
+    }
+
+    public void logout(String username) {
+        authInteractor.logout(this, username);
+    }
+
+    public void showMap(){
+        screen.navigateToMap();
     }
 
     public void showRegister() {
         screen.navigateToRegister();
+    }
+
+    public void showLogin() {
+        screen.navigateToLogin();
     }
 
 }

@@ -1,26 +1,41 @@
 package hu.bme.aut.cykkop.moblab.areachat.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import javax.inject.Inject;
 
+import hu.bme.aut.cykkop.moblab.areachat.MainApplication;
 import hu.bme.aut.cykkop.moblab.areachat.R;
 import hu.bme.aut.cykkop.moblab.areachat.presenter.AuthPresenter;
 import hu.bme.aut.cykkop.moblab.areachat.presenter.RegisterPresenter;
 import hu.bme.aut.cykkop.moblab.areachat.screen.AuthScreen;
 import hu.bme.aut.cykkop.moblab.areachat.screen.RegisterScreen;
 
-public class RegisterActivity extends AppCompatActivity implements RegisterScreen {
+public class RegisterActivity extends Activity implements RegisterScreen {
 
     @Inject
     protected RegisterPresenter presenter;
+
+    private AutoCompleteTextView mUserNameView;
+    private EditText mPasswordView;
+    private AutoCompleteTextView mEmailView;
+    private RadioGroup mGenderGroup;
+    private Button mRegisterButton;
+    private RadioButton radbut;
+
 
     @Override
     protected void onStart() {
@@ -37,17 +52,25 @@ public class RegisterActivity extends AppCompatActivity implements RegisterScree
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((MainApplication) getApplication()).getAppComponent().inject(this);
         setContentView(R.layout.activity_register);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        Button mRegisterButton = (Button) findViewById(R.id.register_action_button);
+        // Set up the login form.
+        mUserNameView = (AutoCompleteTextView) findViewById(R.id.username);
+        mPasswordView = (EditText) findViewById(R.id.password);
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mGenderGroup = (RadioGroup) findViewById(R.id.gender);
+        mRegisterButton = (Button) findViewById(R.id.register_action_button);
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.registerNewMember();
+                radbut = (RadioButton)findViewById(mGenderGroup.getCheckedRadioButtonId());
+                presenter.registerNewMember(mUserNameView.getText().toString(),
+                        mPasswordView.getText().toString(),
+                        mEmailView.getText().toString(),
+                        radbut.getText().toString());
             }
         });
+
     }
 
     @Override

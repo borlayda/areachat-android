@@ -23,7 +23,7 @@ public class PersonData {
      */
     public static final Map<String, PersonItem> ITEM_MAP = new HashMap<String, PersonItem>();
 
-    private static final int COUNT = 25;
+    private static final int COUNT = 5;
 
     static {
         // Add some sample items.
@@ -38,7 +38,7 @@ public class PersonData {
     }
 
     private static PersonItem createDummyItem(int position) {
-        return new PersonItem(String.valueOf(position), "Item " + position, makeDetails(position));
+        return new PersonItem("Paul", new Integer(position).toString(), "Male");
     }
 
     private static String makeDetails(int position) {

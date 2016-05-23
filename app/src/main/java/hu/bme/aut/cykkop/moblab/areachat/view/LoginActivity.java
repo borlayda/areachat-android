@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mUserNameSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.showMap(mUserNameView.getText().toString(), mPasswordView.getText().toString());
+                presenter.authenticate(mUserNameView.getText().toString(), mPasswordView.getText().toString());
             }
         });
         Button mRegisterButton = (Button) findViewById(R.id.register_button);
@@ -137,8 +137,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     @Override
+    public void navigateToLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
     public void navigateToMap() {
         Intent intent = new Intent(this, SelectorActivity.class);
+        intent.putExtra("username", mUserNameView.getText().toString());
         startActivity(intent);
     }
 

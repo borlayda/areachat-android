@@ -4,7 +4,12 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import hu.bme.aut.cykkop.moblab.areachat.interactor.AuthInteractor;
+import hu.bme.aut.cykkop.moblab.areachat.interactor.MessageInteractor;
+import hu.bme.aut.cykkop.moblab.areachat.interactor.PositionInteractor;
 import hu.bme.aut.cykkop.moblab.areachat.presenter.AuthPresenter;
+import hu.bme.aut.cykkop.moblab.areachat.presenter.MessagePresenter;
+import hu.bme.aut.cykkop.moblab.areachat.presenter.PositionPresenter;
+import hu.bme.aut.cykkop.moblab.areachat.presenter.RegisterPresenter;
 import hu.bme.aut.cykkop.moblab.areachat.view.LoginActivity;
 import hu.bme.aut.cykkop.moblab.areachat.view.NavigationActivity;
 import hu.bme.aut.cykkop.moblab.areachat.view.RegisterActivity;
@@ -21,5 +26,10 @@ public interface AppComponent {
 
     AuthPresenter authPresenter();
     AuthInteractor authInteractor();
+    RegisterPresenter registerPresenter();
+    MessagePresenter messagePresenter();
+    PositionPresenter positioinPresenter();
+    MessageInteractor messageInteractor();
+    PositionInteractor positionInteractor();
 
 }
