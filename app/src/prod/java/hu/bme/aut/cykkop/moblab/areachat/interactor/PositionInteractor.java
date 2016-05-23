@@ -1,19 +1,11 @@
 package hu.bme.aut.cykkop.moblab.areachat.interactor;
 
-import android.support.design.widget.TabLayout;
-
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import dagger.Module;
-import dagger.Provides;
-import io.swagger.client.api.LoginApi;
 import io.swagger.client.api.PositionApi;
 import io.swagger.client.model.MyString;
 import io.swagger.client.model.Person;
@@ -35,7 +27,7 @@ public class PositionInteractor {
     @Inject
     public PositionInteractor() {
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.106:5000/v1/")
+                .baseUrl("http://localhost:5000/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         positionApi = retrofit.create(PositionApi.class);

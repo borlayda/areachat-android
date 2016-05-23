@@ -10,7 +10,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import hu.bme.aut.cykkop.moblab.areachat.interactor.DataInteractor;
 import hu.bme.aut.cykkop.moblab.areachat.model.Person;
 import hu.bme.aut.cykkop.moblab.areachat.model.Position;
 import io.realm.Realm;

@@ -1,29 +1,21 @@
 package hu.bme.aut.cykkop.moblab.areachat.interactor;
 
-import android.app.Notification;
-import android.os.AsyncTask;
-import android.util.JsonReader;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import java.io.IOException;
-
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import dagger.Module;
-import dagger.Provides;
 import hu.bme.aut.cykkop.moblab.areachat.presenter.AuthPresenter;
 import hu.bme.aut.cykkop.moblab.areachat.presenter.RegisterPresenter;
 import io.swagger.client.api.UserApi;
 import io.swagger.client.model.MyString;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.GsonConverterFactory;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.GsonConverterFactory;
 import retrofit2.ScalarsConverterFactory;
 
 /**
@@ -38,7 +30,7 @@ public class AuthInteractor {
     @Inject
     public AuthInteractor() {
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.106:5000/v1/")
+                .baseUrl("http://localhost:5000/v1/")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();

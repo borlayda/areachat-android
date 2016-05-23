@@ -1,21 +1,10 @@
 package hu.bme.aut.cykkop.moblab.areachat.interactor;
 
-import android.widget.Toast;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import dagger.Module;
-import dagger.Provides;
-import hu.bme.aut.cykkop.moblab.areachat.R;
 import hu.bme.aut.cykkop.moblab.areachat.model.Message;
 import hu.bme.aut.cykkop.moblab.areachat.model.Person;
-import hu.bme.aut.cykkop.moblab.areachat.view.ChatActivity;
-import io.swagger.client.api.LoginApi;
 import io.swagger.client.api.MessageApi;
 import io.swagger.client.model.MessageList;
 import io.swagger.client.model.MyString;
@@ -37,7 +26,7 @@ public class MessageInteractor {
     @Inject
     public MessageInteractor() {
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.106:5000/v1/")
+                .baseUrl("http://localhost:5000/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         messageApi = retrofit.create(MessageApi.class);

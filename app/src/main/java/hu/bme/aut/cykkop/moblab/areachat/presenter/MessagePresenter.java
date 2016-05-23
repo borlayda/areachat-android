@@ -1,13 +1,9 @@
 package hu.bme.aut.cykkop.moblab.areachat.presenter;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import dagger.Module;
-import hu.bme.aut.cykkop.moblab.areachat.interactor.AuthInteractor;
 import hu.bme.aut.cykkop.moblab.areachat.interactor.MessageInteractor;
-import hu.bme.aut.cykkop.moblab.areachat.interactor.PersonInteractor;
-import hu.bme.aut.cykkop.moblab.areachat.interactor.PositionInteractor;
 import hu.bme.aut.cykkop.moblab.areachat.model.Message;
 import hu.bme.aut.cykkop.moblab.areachat.model.Person;
 import hu.bme.aut.cykkop.moblab.areachat.screen.MessageScreen;

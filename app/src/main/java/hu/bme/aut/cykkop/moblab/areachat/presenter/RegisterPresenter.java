@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 import dagger.Module;
 import hu.bme.aut.cykkop.moblab.areachat.interactor.AuthInteractor;
-import hu.bme.aut.cykkop.moblab.areachat.screen.AuthScreen;
 import hu.bme.aut.cykkop.moblab.areachat.screen.RegisterScreen;
 
 /**
